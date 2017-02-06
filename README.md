@@ -15,8 +15,7 @@ import { PureConnect } from 'react-redux-pure';
 import { LOGOUT } from './actions';
 import { username } from './selectors';
 
-const HelloUser = PureConnect<{ page: string }>(
-    `HelloUser` /* used for React's displayName */,
+const HelloUser = PureConnect<{ page: string }>(`HelloUser` /* used for React's displayName */)(
     (state) => ({
         username: username(state)
     }),
