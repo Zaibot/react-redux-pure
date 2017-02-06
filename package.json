@@ -1,6 +1,6 @@
 {
   "name": "react-redux-pure",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "es6/index.js",
   "typings": "es6/index.d.ts",
@@ -16,7 +16,12 @@
     "type": "git",
     "url": "git+https://github.com/Zaibot/react-redux-pure.git"
   },
-  "keywords": ["react", "redux", "typescript", "pure"],
+  "keywords": [
+    "react",
+    "redux",
+    "typescript",
+    "pure"
+  ],
   "author": "T. de Groen",
   "license": "MIT",
   "bugs": {
