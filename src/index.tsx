@@ -12,7 +12,7 @@ export const PureConnect = function <TProps>(name: string) {
     return function <TState, TActions>(
         state: (state, props?: TProps) => TState,
         dispatch: (dispatch, props?: TProps) => TActions,
-        render: (props: TProps & TState & TActions) => React.ReactElement<TProps>
+        render: (props: TProps & TState & TActions & { children?: React.ReactNode }) => React.ReactElement<TProps>
     ): React.StatelessComponent<TProps> {
         const f = function PureFunction(props) {
             return <PureComponentWrap _inner={render} {...props} />
