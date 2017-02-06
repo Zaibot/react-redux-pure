@@ -1,0 +1,38 @@
+{
+  "name": "react-redux-pure",
+  "version": "0.0.0",
+  "description": "",
+  "main": "es6/index.js",
+  "typings": "es6/index.d.ts",
+  "scripts": {
+    "test": "echo \"no test specified\" && exit 0",
+    "watch": "tsc -w",
+    "prepublish": "npm run build && npm run test",
+    "build": "npm run compile",
+    "compile": "npm run compile:ts",
+    "compile:ts": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zaibot/react-redux-pure.git"
+  },
+  "keywords": ["react", "redux", "typescript", "pure"],
+  "author": "T. de Groen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zaibot/react-redux-pure/issues"
+  },
+  "homepage": "https://github.com/Zaibot/react-redux-pure#readme",
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^15.4.2",
+    "redux": "^3.6.0",
+    "react-redux": "^5.0.2"
+  },
+  "devDependencies": {
+    "react": "^15.4.2",
+    "redux": "^3.6.0",
+    "react-redux": "^5.0.2",
+    "typescript": "^2.1.5"
+  }
+}

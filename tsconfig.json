@@ -1,0 +1,30 @@
+{
+	"compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "jsx": "react",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": true,
+        "noImplicitAny": false,
+        "noImplicitUseStrict": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "sourceMap": true,
+        "outDir": "es6",
+        "lib": [
+          "es5",
+          "es6",
+          "dom"
+				]
+	},
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "include": [
+    "src/**/*"
+  ]
+}
