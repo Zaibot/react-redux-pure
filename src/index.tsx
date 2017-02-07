@@ -8,6 +8,16 @@ class PureComponentWrap extends React.PureComponent<any, any> {
     }
 }
 
+export const Connect = function <TProps>(name: string) {
+    return function <TState, TActions>(
+        state: (state, props?: TProps) => TState,
+        dispatch: (dispatch, props?: TProps) => TActions,
+        render: (props: TProps & TState & TActions & { children?: React.ReactNode }) => React.ReactElement<TProps>
+    ): React.StatelessComponent<TProps> {
+        return connect(state, dispatch)(render) as any as React.StatelessComponent<TProps>;
+    };
+};
+
 export const PureConnect = function <TProps>(name: string) {
     return function <TState, TActions>(
         state: (state, props?: TProps) => TState,
