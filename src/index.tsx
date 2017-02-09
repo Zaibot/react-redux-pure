@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-const nameFunction = (name, fn) => new Function(`fn`, `return function ${name}() { return fn.call(this, arguments) };`)(fn);
+const nameFunction = (name, fn) => new Function(`fn`, `return function ${name}() { return fn.apply(this, arguments) };`)(fn);
 
 class PureComponentWrap extends React.PureComponent<any, any> {
     render() {
