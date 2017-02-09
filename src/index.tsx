@@ -27,7 +27,11 @@ export const PureConnect = function <TProps>(name: string) {
         const f = function PureFunction(props) {
             return <PureComponentWrap _inner={render} {...props} />
         } as any;
-        f.displayName = `Connecting(${name})`;
+
+        if (state && !state.name) Object.defineProperty(state, "name", { get: () => `PureConnect.state(${name})` });
+        if (dispatch && !dispatch.name) Object.defineProperty(dispatch, "name", { get: () => `PureConnect.dispatch(${name})` });
+        if (render && !render.name) Object.defineProperty(render, "name", { get: () => `PureConnect.render(${name})` });
+        Object.defineProperty(f, "name", { get: () => `PureConnect(${name})` });
         return connect(state, dispatch)(f) as any as React.StatelessComponent<TProps>;
     };
 };
