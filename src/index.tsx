@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+const nameFunction = (name, fn) => new Function(`fn`, `return function ${name}() { return fn.call(this, arguments) };`)(fn);
+
 class PureComponentWrap extends React.PureComponent<any, any> {
     render() {
         const { _inner, ...others } = this.props;
@@ -24,14 +26,15 @@ export const PureConnect = function <TProps>(name: string) {
         dispatch: (dispatch, props?: TProps) => TActions,
         render: (props: TProps & TState & TActions & { children?: React.ReactNode }) => React.ReactElement<TProps>
     ): React.StatelessComponent<TProps> {
-        const f = function PureFunction(props) {
+        var f = function PureFunction(props) {
             return <PureComponentWrap _inner={render} {...props} />
         } as any;
 
-        if (state && !state.name) Object.defineProperty(state, "name", { get: () => `PureConnect.state(${name})` });
-        if (dispatch && !dispatch.name) Object.defineProperty(dispatch, "name", { get: () => `PureConnect.dispatch(${name})` });
-        if (render && !render.name) Object.defineProperty(render, "name", { get: () => `PureConnect.render(${name})` });
-        Object.defineProperty(f, "name", { get: () => `PureConnect(${name})` });
+        if (state) state = nameFunction(`PureConnect_${name}_state`, state)
+        if (dispatch) dispatch = nameFunction(`PureConnect_${name}_dispatch`, dispatch)
+        if (render) render = nameFunction(`PureConnect_${name}_render`, render)
+        if (f) f = nameFunction(`PureConnect_${name}`, f)
+
         return connect(state, dispatch)(f) as any as React.StatelessComponent<TProps>;
     };
 };
