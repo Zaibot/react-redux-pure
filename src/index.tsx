@@ -34,6 +34,7 @@ export const PureConnect = function <TProps>(name: string) {
         if (dispatch) dispatch = nameFunction(`PureConnect_${name}_dispatch`, dispatch)
         if (render) render = nameFunction(`PureConnect_${name}_render`, render)
         if (f) f = nameFunction(`PureConnect_${name}`, f)
+        f.displayName = `PureConnect(${name})`;
 
         return connect(state, dispatch)(f) as any as React.StatelessComponent<TProps>;
     };
