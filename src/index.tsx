@@ -20,6 +20,21 @@ export const Connect = function <TProps>(name: string) {
     };
 };
 
+export const PureFunctional = function <TProps>(name: string) {
+    return function(
+        render: (props: TProps & { children?: React.ReactNode }) => React.ReactElement<TProps>
+    ): React.StatelessComponent<TProps> {
+        var f = function PureFunction(props) {
+            return <PureComponentWrap _inner={render} {...props} />
+        } as any;
+
+        if (f) f = nameFunction(`PureFunctional_${name}`, f)
+        f.displayName = `PureFunctional(${name})`;
+
+        return f as any as React.StatelessComponent<TProps>;
+    };
+};
+
 export const PureConnect = function <TProps>(name: string) {
     return function <TState, TActions>(
         state: (state, props?: TProps) => TState,
