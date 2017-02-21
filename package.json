@@ -1,6 +1,6 @@
 {
   "name": "react-redux-pure",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "",
   "main": "es6/index.js",
   "typings": "es6/index.d.ts",
